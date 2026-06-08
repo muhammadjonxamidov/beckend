@@ -26,19 +26,19 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
   def create(self, validate_data):
     return User.objects.create_user(**validate_data)
 
-class UserLoginSerializer(serializers.ModelSerializer):
-    # EmailField o'rniga CharField ishlatamiz, shunda u formatni tekshirmaydi
-    email = serializers.CharField(max_length=255) 
-    
-    class Meta:
-        model = User
-        fields = ['email', 'password']
-
 # class UserLoginSerializer(serializers.ModelSerializer):
-#   email = serializers.EmailField(max_length=255)
-#   class Meta:
-#     model = User
-#     fields = ['email', 'password']
+#     # EmailField o'rniga CharField ishlatamiz, shunda u formatni tekshirmaydi
+#     email = serializers.CharField(max_length=255) 
+    
+#     class Meta:
+#         model = User
+#         fields = ['email', 'password']
+
+class UserLoginSerializer(serializers.ModelSerializer):
+  email = serializers.EmailField(max_length=255)
+  class Meta:
+    model = User
+    fields = ['email', 'password']
 
 class UserProfileSerializer(serializers.ModelSerializer):
   class Meta:
